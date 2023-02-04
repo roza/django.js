@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.conf.urls import patterns, url, include
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views.generic import TemplateView
 from django.views.generic.edit import BaseFormView
 

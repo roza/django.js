@@ -1,7 +1,7 @@
 import json
 
 from django.core.cache import cache
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.test import TestCase
 from django.test.utils import override_settings
 from django.utils import six
@@ -175,7 +175,7 @@ class UrlsTestMixin(object):
 
     @override_settings(JS_CACHE_DURATION=0)
     def test_force_script_name(self):
-        from django.core.urlresolvers import set_script_prefix, _prefixes
+        from django.urls import set_script_prefix, _prefixes
 
         try:
             set_script_prefix("/force_script")
@@ -215,7 +215,7 @@ class UrlsJsonViewTest(UrlsTestMixin, TestCase):
 
     @override_settings(JS_CACHE_DURATION=0)
     def test_force_script_name(self):
-        from django.core.urlresolvers import set_script_prefix, _prefixes
+        from django.urls import set_script_prefix, _prefixes
         try:
             url = reverse('django_js_urls')
             set_script_prefix("/force_script")

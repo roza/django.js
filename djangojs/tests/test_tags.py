@@ -1,7 +1,7 @@
 from django.utils import unittest
 
 from django.contrib.staticfiles.templatetags.staticfiles import static
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.template import Context, Template
 from django.test import TestCase
 from django.test.utils import override_settings

@@ -14,7 +14,7 @@ from tempfile import NamedTemporaryFile, mkstemp
 
 from django.contrib.staticfiles import finders
 from django.core.files.storage import FileSystemStorage
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.template.loader import render_to_string
 from django.test import LiveServerTestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
