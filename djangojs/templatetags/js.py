@@ -111,7 +111,7 @@ def js_lib(filename):
 @register.simple_tag
 def javascript(filename, type='text/javascript'):
     '''A simple shortcut to render a ``script`` tag to a static javascript file'''
-    if '?' in filename and len(filename.split('?')) is 2:
+    if '?' in filename and len(filename.split('?')) == 2:
         filename, params = filename.split('?')
         return mark_safe('<script type="%s" src="%s?%s"></script>' % (type, staticfiles_storage.url(filename), params))
     else:
