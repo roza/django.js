@@ -63,7 +63,7 @@ def urls_as_json():
 def _get_urls_for_pattern(pattern, prefix='', namespace=None):
     urls = {}
 
-    if prefix is '':
+    if prefix == '':
         prefix = get_script_prefix()
 
     if issubclass(pattern.__class__, URLPattern):
