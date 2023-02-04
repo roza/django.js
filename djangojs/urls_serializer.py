@@ -8,7 +8,7 @@ import sys
 import types
 
 from django.core.serializers.json import DjangoJSONEncoder
-from django.urls import RegexURLPattern, RegexURLResolver, get_script_prefix
+from django.urls import URLPattern, URLResolver, get_script_prefix
 from django.utils import six
 
 from djangojs.conf import settings
@@ -29,7 +29,7 @@ RE_ESCAPE = re.compile(r'([^\\]?)\\')  # Recognize escape characters
 RE_START_END = re.compile(r'[\$\^]')  # Recognize start and end charaters
 
 try:  # check for django-cms
-    from cms.appresolver import AppRegexURLResolver
+    from cms.appresolver import AppURLResolver
     CMS_APP_RESOLVER = True
 except:
     CMS_APP_RESOLVER = False  # we can live without it
@@ -66,7 +66,7 @@ def _get_urls_for_pattern(pattern, prefix='', namespace=None):
     if prefix is '':
         prefix = get_script_prefix()
 
-    if issubclass(pattern.__class__, RegexURLPattern):
+    if issubclass(pattern.__class__, URLPattern):
         if settings.JS_URLS_UNNAMED:
             mod_name, obj_name = pattern.callback.__module__, pattern.callback.__name__
             try:
@@ -113,10 +113,10 @@ def _get_urls_for_pattern(pattern, prefix='', namespace=None):
             # Unescape charaters
             full_url = RE_ESCAPE.sub(r'\1', full_url)
             urls[pattern_name] = full_url
-    elif (CMS_APP_RESOLVER) and (issubclass(pattern.__class__, AppRegexURLResolver)):  # hack for django-cms
+    elif (CMS_APP_RESOLVER) and (issubclass(pattern.__class__, AppURLResolver)):  # hack for django-cms
         for p in pattern.url_patterns:
             urls.update(_get_urls_for_pattern(p, prefix=prefix, namespace=namespace))
-    elif issubclass(pattern.__class__, RegexURLResolver):
+    elif issubclass(pattern.__class__, URLResolver):
         if pattern.urlconf_name:
             if pattern.namespace and not pattern.app_name:
                 # Namespace without app_name
