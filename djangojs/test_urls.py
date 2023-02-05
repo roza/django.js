@@ -55,7 +55,7 @@ other_fake_patterns = patterns('',
     re_path(r'^fake$', TestFormView.as_view(), name='fake'),
 )
 
-test_patterns = patterns('',
+test_patterns = [
     re_path(r'^form$', TestFormView.as_view(), name='test_form'),
     re_path(r'^unamed$', 'djangojs.test_urls.unnamed'),
     re_path(r'^unnamed-class$', TestFormView.as_view()),
@@ -80,9 +80,9 @@ test_patterns = patterns('',
     re_path(r'^namespace2/', include(nested_patterns, namespace="ns2", app_name="app2")),
     re_path(r'^namespace3/', include(fake_patterns, namespace="ns3")),
     re_path(r'^test\.json$', TestFormView.as_view(), name='escaped'),
-)
+]
 
-urlpatterns = patterns('',
+urlpatterns = [
     re_path(r'^$', DjangoJsTestView.as_view(), name='djangojs_tests'),
 
     re_path(r'^djangojs/', include('djangojs.urls')),
@@ -91,4 +91,5 @@ urlpatterns = patterns('',
     re_path(r'^qunit/$', QUnitTestView.as_view(), name='djangojs_qunit_tests'),
 
     re_path(r'^test/', include(test_patterns)),
-)
+]
+

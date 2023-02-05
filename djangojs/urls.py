@@ -29,7 +29,7 @@ def js_info_dict():
     return js_info_dict
 
 
-urlpatterns = ['',
+urlpatterns = [
     url(r'^init\.js$', JsInitView.as_view(), name='django_js_init'),
     url(r'^urls$', UrlsJsonView.as_view(), name='django_js_urls'),
     url(r'^context$', ContextJsonView.as_view(), name='django_js_context'),
