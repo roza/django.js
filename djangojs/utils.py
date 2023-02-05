@@ -11,7 +11,7 @@ import sys
 from django.contrib.staticfiles import finders
 from django.contrib.staticfiles.utils import matches_patterns
 from django.core.serializers.json import DjangoJSONEncoder
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str as force_text
 from django.utils.functional import Promise
 
 logger = logging.getLogger(__name__)
