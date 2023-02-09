@@ -12,6 +12,7 @@ from djangojs import JQUERY_DEFAULT_VERSION
 DEFAULTS = {
     'DEBUG': False,
     'TESTING': 'test' in sys.argv,
+    'MIDDLEWARE_CLASSES': (),
     'JS_CONTEXT_ENABLED': True,
     'JS_URLS_ENABLED': True,
     'JS_USER_ENABLED': True,
