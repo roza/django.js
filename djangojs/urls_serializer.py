@@ -86,7 +86,7 @@ def _get_urls_for_pattern(pattern, prefix='', namespace=None):
                 return {}
             if namespace:
                 pattern_name = ':'.join((namespace, pattern_name))
-            full_url = prefix + pattern.pattern
+            full_url = prefix + str(pattern.pattern)
             for char in ['^', '$']:
                 full_url = full_url.replace(char, '')
             # remove optionnal non capturing groups
@@ -131,7 +131,7 @@ def _get_urls_for_pattern(pattern, prefix='', namespace=None):
                     continue
                 if settings.JS_URLS_NAMESPACES_EXCLUDE and namespaces in settings.JS_URLS_NAMESPACES_EXCLUDE:
                     continue
-                new_prefix = '%s%s' % (prefix, pattern.pattern)
+                new_prefix = '%s%s' % (prefix, str(pattern.pattern))
                 urls.update(_get_urls(pattern.urlconf_name, new_prefix, namespaces))
 
     return urls
